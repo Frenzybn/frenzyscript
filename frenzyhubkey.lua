@@ -124,14 +124,15 @@ Tab:CreateButton({
             local isValid, expirationTime = IsKeyValid(_G.KeyInput)  -- Түлхүүр зөв эсэхийг шалгах
             if isValid then
                 SaveKeyExpiration(expirationTime)  -- Түлхүүрийн хугацааг хадгалах
-                Rayfield:Destroy()  -- Одоо байгаа цонх болон интерфэйсийг устгах
-                MakeScriptHub()  -- Зөв түлхүүрийг оруулсан тул скриптийг ачаална
                 Rayfield:Notify({
                     Title = "Key Accepted",
                     Content = "Your subscription is now active until " .. os.date("%Y-%m-%d %H:%M:%S", expirationTime),
                     Duration = 5,
                     Image = 4483345998
                 })
+                wait(1)  -- Мэдэгдлийн дараа ачааллыг хүлээх
+                Rayfield:Destroy()  -- Одоо байгаа цонх болон интерфэйсийг устгах
+                MakeScriptHub()  -- Зөв түлхүүрийг оруулсан тул скриптийг ачаална
             else
                 Rayfield:Notify({
                     Title = "Invalid Key",
