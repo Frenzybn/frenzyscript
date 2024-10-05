@@ -1,98 +1,76 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Mobile%20Friendly%20Orion')))()
-local Player = game.Players.LocalPlayer -- This Will Reveal The Player Name
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
 local Window = OrionLib:MakeWindow({
-	Name = "Subscription System with 1-Day Key",
-	HidePremium = false,
-	SaveConfig = true,
-	ConfigFolder = "OrionTest",
-	IntroText = "Loading Script..."
-}) -- This Will Load The Script Hub
+    Name = "Key system", 
+    HidePremium = false, 
+    SaveConfig = true, 
+    IntroText = "Loading lionstarter.dll..."
+})
 
--- Function to get the correct key and expiration date from Pastebin
-local function getKeyDataFromPastebin()
-	local keyUrl = 'https://pastebin.com/B9h0fG6e' -- Replace with your Pastebin raw URL
-	local response = game:HttpGet(keyUrl)
-	
-	-- Split the response into key and expiration date
-	local key, expiration = response:match("([^|]+)|([^|]+)")
-	return key, expiration
+OrionLib:MakeNotification({
+	Name = "lionware notifier",
+	Content = "lionware.exe has been loaded.",
+	Image = "rbxassetid://4483345998",
+	Time = 3
+})
+
+_G.Key = "LION4ZP"  -- Таны зөв түлхүүр
+_G.KeyInput = "string"
+
+-- Таны Pastebin-ээс скриптийг ачаалах хэсэг
+function MakeScriptHub()
+    loadstring(game:HttpGet("https://pastebin.com/raw/WjJ5GPt9"))()  -- Таны хийх ёстой Pastebin линк байна
 end
 
--- Function to check if the key is still valid based on expiration date
-local function isKeyExpired(expirationDate)
-	local currentTime = os.time()
-	local expirationTime = os.time({
-		year = tonumber(expirationDate:sub(1,4)),
-		month = tonumber(expirationDate:sub(6,7)),
-		day = tonumber(expirationDate:sub(9,10)),
-		hour = tonumber(expirationDate:sub(12,13)),
-		min = tonumber(expirationDate:sub(15,16)),
-		sec = tonumber(expirationDate:sub(18,19))
-	})
-	return currentTime > expirationTime
+-- Түлхүүр зөв үед мэдэгдэл гаргах функц
+function CorrectKeyNotification()
+    OrionLib:MakeNotification({
+        Name = "Correct Key!",
+        Content = "lionware.exe has been loaded.",
+        Image = "rbxassetid://4483345998",
+        Time = 3
+    })
 end
 
--- Fetch the correct key and its expiration date from Pastebin
-getgenv().Key, getgenv().ExpirationDate = getKeyDataFromPastebin()
-getgenv().KeyInput = "" -- Require for the key to work
+-- Түлхүүр буруу үед мэдэгдэл гаргах функц
+function IncorrectKeyNotification()
+    OrionLib:MakeNotification({
+        Name = "Incorrect Key!",
+        Content = "lionware.exe has not been loaded.",
+        Image = "rbxassetid://4483345998",
+        Time = 3
+    })
+end
 
+-- "Key" табыг үүсгэх
 local Tab = Window:MakeTab({
 	Name = "Key",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
-}) -- Making A Tab
+})
 
--- Textbox for entering the key
+-- Хэрэглэгчийн түлхүүр оруулах Textbox
 Tab:AddTextbox({
-	Name = "Enter Key",
+	Name = "Enter key",
 	Default = "",
 	TextDisappear = true,
 	Callback = function(Value)
-		getgenv().KeyInput = Value
-	end
+		_G.KeyInput = Value  -- Хэрэглэгчийн оруулсан түлхүүрийг хадгална
+	end	  
 })
 
--- Button to check the key
+-- Түлхүүр шалгах товчлуур
 Tab:AddButton({
 	Name = "Check Key",
 	Callback = function()
-		if getgenv().KeyInput == getgenv().Key then
-			if isKeyExpired(getgenv().ExpirationDate) then
-				OrionLib:MakeNotification({
-					Name = "Expired Key!",
-					Content = "The key you entered has expired.",
-					Image = "rbxassetid://4483345998",
-					Time = 5
-				})
-			else
-				OrionLib:MakeNotification({
-					Name = "Checking Key",
-					Content = "Checking the key you entered...",
-					Image = "rbxassetid://4483345998",
-					Time = 5
-				})
-				wait(2)
-				OrionLib:MakeNotification({
-					Name = "Correct Key!",
-					Content = "The key you entered is correct.",
-					Image = "rbxassetid://4483345998",
-					Time = 5
-				})
-				wait(1)
-				OrionLib:Destroy()
-				wait(.3)
-				MakeScriptHub()
-			end
-		else
-			OrionLib:MakeNotification({
-				Name = "Incorrect Key!",
-				Content = "The key you entered is incorrect.",
-				Image = "rbxassetid://4483345998",
-				Time = 5
-			})
-		end
-	end
+      	if _G.KeyInput == _G.Key then  -- Хэрэв оруулсан түлхүүр зөв байвал
+            MakeScriptHub()  -- Скрипт ачаална
+            CorrectKeyNotification()  -- Зөв түлхүүрийн мэдэгдэл гаргана
+        else
+            IncorrectKeyNotification()  -- Буруу түлхүүрийн мэдэгдэл гаргана
+        end
+  	end    
 })
 
-OrionLib:Init() -- Require If The Script Is Done
+-- Скриптийг эхлүүлэх
+OrionLib:Init()
