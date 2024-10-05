@@ -10,17 +10,44 @@ local HubFrame = Instance.new("Frame")
 HubFrame.Size = UDim2.new(0, 400, 0, 300)
 HubFrame.Position = UDim2.new(0.5, -200, 0.5, -150)
 HubFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+HubFrame.BackgroundTransparency = 0.1
+HubFrame.BorderSizePixel = 0
+HubFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 HubFrame.Parent = ScreenGui
+
+-- Add corner radius to HubFrame (Rounded corners)
+local UICorner = Instance.new("UICorner")
+UICorner.CornerRadius = UDim.new(0, 12)
+UICorner.Parent = HubFrame
 
 -- Create a title for the hub
 local Title = Instance.new("TextLabel")
 Title.Size = UDim2.new(1, 0, 0, 50)
-Title.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+Title.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.Text = "Custom UI Hub"
-Title.Font = Enum.Font.SourceSansBold
+Title.Font = Enum.Font.GothamBold
 Title.TextSize = 24
+Title.BorderSizePixel = 0
 Title.Parent = HubFrame
+
+-- Add corner radius to Title
+local TitleCorner = Instance.new("UICorner")
+TitleCorner.CornerRadius = UDim.new(0, 12)
+TitleCorner.Parent = Title
+
+-- Add shadow effect for the frame
+local Shadow = Instance.new("ImageLabel")
+Shadow.Size = UDim2.new(1, 30, 1, 30)
+Shadow.Position = UDim2.new(0.5, 0, 0.5, 0)
+Shadow.AnchorPoint = Vector2.new(0.5, 0.5)
+Shadow.BackgroundTransparency = 1
+Shadow.Image = "rbxassetid://5587865193"
+Shadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+Shadow.ImageTransparency = 0.5
+Shadow.ScaleType = Enum.ScaleType.Slice
+Shadow.SliceCenter = Rect.new(24, 24, 276, 276)
+Shadow.Parent = HubFrame
 
 -- Create tabs for different features
 local TabFrame = Instance.new("Frame")
@@ -33,12 +60,17 @@ TabFrame.Parent = HubFrame
 local MainTabButton = Instance.new("TextButton")
 MainTabButton.Size = UDim2.new(0, 100, 0, 30)
 MainTabButton.Position = UDim2.new(0, 10, 0, 0)
-MainTabButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+MainTabButton.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
 MainTabButton.Text = "Main"
 MainTabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-MainTabButton.Font = Enum.Font.SourceSansBold
+MainTabButton.Font = Enum.Font.GothamBold
 MainTabButton.TextSize = 18
 MainTabButton.Parent = TabFrame
+
+-- Add corner radius to MainTabButton
+local MainTabCorner = Instance.new("UICorner")
+MainTabCorner.CornerRadius = UDim.new(0, 10)
+MainTabCorner.Parent = MainTabButton
 
 -- Create a content frame for the main tab
 local MainTabFrame = Instance.new("Frame")
@@ -54,25 +86,9 @@ MainTabLabel.Position = UDim2.new(0, 10, 0, 10)
 MainTabLabel.BackgroundTransparency = 1
 MainTabLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 MainTabLabel.Text = "Welcome to Custom UI Hub"
-MainTabLabel.Font = Enum.Font.SourceSansBold
+MainTabLabel.Font = Enum.Font.GothamBold
 MainTabLabel.TextSize = 20
 MainTabLabel.Parent = MainTabFrame
-
--- Create a button in the main tab
-local MainTabButton = Instance.new("TextButton")
-MainTabButton.Size = UDim2.new(0, 150, 0, 40)
-MainTabButton.Position = UDim2.new(0, 10, 0, 70)
-MainTabButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-MainTabButton.Text = "Click Me"
-MainTabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-MainTabButton.Font = Enum.Font.SourceSansBold
-MainTabButton.TextSize = 18
-MainTabButton.Parent = MainTabFrame
-
--- Button click functionality
-MainTabButton.MouseButton1Click:Connect(function()
-    print("Button clicked!")
-end)
 
 -- Create an input text box in the main tab
 local TextBox = Instance.new("TextBox")
@@ -82,25 +98,45 @@ TextBox.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextBox.PlaceholderText = "Enter Key"
 TextBox.Text = ""
-TextBox.Font = Enum.Font.SourceSansBold
+TextBox.Font = Enum.Font.GothamBold
 TextBox.TextSize = 18
 TextBox.Parent = MainTabFrame
+
+-- Add corner radius to TextBox
+local TextBoxCorner = Instance.new("UICorner")
+TextBoxCorner.CornerRadius = UDim.new(0, 8)
+TextBoxCorner.Parent = TextBox
 
 -- Create a button to check the key
 local CheckKeyButton = Instance.new("TextButton")
 CheckKeyButton.Size = UDim2.new(0, 100, 0, 40)
 CheckKeyButton.Position = UDim2.new(0, 220, 0, 130)
-CheckKeyButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+CheckKeyButton.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
 CheckKeyButton.Text = "Check Key"
 CheckKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-CheckKeyButton.Font = Enum.Font.SourceSansBold
+CheckKeyButton.Font = Enum.Font.GothamBold
 CheckKeyButton.TextSize = 18
 CheckKeyButton.Parent = MainTabFrame
 
--- Key check functionality
+-- Add corner radius to CheckKeyButton
+local CheckKeyButtonCorner = Instance.new("UICorner")
+CheckKeyButtonCorner.CornerRadius = UDim.new(0, 8)
+CheckKeyButtonCorner.Parent = CheckKeyButton
+
+-- Key check functionality with valid key check
+local validKeys = {"VALIDKEY", "ANOTHERKEY", "VIPACCESS"}
+
 CheckKeyButton.MouseButton1Click:Connect(function()
     local key = TextBox.Text
-    if key == "VALIDKEY" then
+    local isValid = false
+    for _, validKey in pairs(validKeys) do
+        if key == validKey then
+            isValid = true
+            break
+        end
+    end
+
+    if isValid then
         print("Key accepted!")
         MainTabLabel.Text = "Key Accepted!"
     else
@@ -108,3 +144,4 @@ CheckKeyButton.MouseButton1Click:Connect(function()
         MainTabLabel.Text = "Invalid Key!"
     end
 end)
+
