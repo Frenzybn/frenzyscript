@@ -1,5 +1,5 @@
 -- Load your custom hub library (you can host it on GitHub or another platform)
-local CustomHub = 
+local CustomHub =  loadstring(game:HttpGet("https://raw.githubusercontent.com/Frenzybn/frenzyscript/refs/heads/main/FrenzyHubUi"))()
 
 -- Key system configuration
 _G.KeyInput = "string"
