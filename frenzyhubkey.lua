@@ -85,6 +85,11 @@ function CustomHub:InitializeFeatures()
     print("Feature 2: ESP Enabled")
 end
 
+-- Зөв түлхүүр байвал ачааллах функц
+function MakeScriptHub()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Frenzybn/frenzyscript/refs/heads/main/FrenzyHub.lua"))()  -- Load Frenzy Hub script
+end
+
 -- Custom UI window for key entry and verification
 local Window = CustomHub:CreateWindow({
     Name = "Custom Hub Key System",
@@ -122,6 +127,7 @@ Tab:CreateButton({
                 Duration = 5,
                 Image = 4483345998
             })
+            MakeScriptHub() -- Load Frenzy Hub
         else
             local isValid, expirationTime = IsKeyValid(_G.KeyInput) -- Validate the entered key
             if isValid then
@@ -135,6 +141,7 @@ Tab:CreateButton({
                 wait(1) -- Wait before proceeding
                 CustomHub:Destroy() -- Destroy the key input UI
                 LoadCustomHub() -- Load the custom hub
+                MakeScriptHub() -- Load Frenzy Hub
             else
                 CustomHub:Notify({
                     Title = "Invalid Key",
