@@ -1,15 +1,16 @@
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+-- Load Hydra Hub Library
+local HydraHub = loadstring(game:HttpGet('https://raw.githubusercontent.com/StepBroFurious/Script/main/HydraHubUi.lua'))()
 
--- Түлхүүр болон хугацаа хадгалах хувьсагчууд
+-- Key and expiration variables
 _G.KeyInput = "string"
-local savedKeyPath = "SubscriptionConfig/KeyExpiration"
+local savedKeyPath = "HydraConfig/KeyExpiration"
 
--- Түлхүүрийн хугацааг хадгалах функц
+-- Function to save expiration time
 local function SaveKeyExpiration(expirationTime)
     writefile(savedKeyPath, tostring(expirationTime))
 end
 
--- Түлхүүрийн хугацааг ачаалах функц
+-- Function to load expiration time
 local function LoadKeyExpiration()
     if isfile(savedKeyPath) then
         return tonumber(readfile(savedKeyPath))
@@ -18,7 +19,7 @@ local function LoadKeyExpiration()
     end
 end
 
--- Түлхүүрийн хугацаа хүчинтэй эсэхийг шалгах функц
+-- Check if subscription is still active
 local function IsSubscriptionActive()
     local expirationTime = LoadKeyExpiration()
     if expirationTime then
@@ -28,7 +29,7 @@ local function IsSubscriptionActive()
     end
 end
 
--- Date-г timestamp болгон хувиргах функц
+-- Convert date to timestamp
 local function ConvertToTimestamp(dateString)
     local pattern = "(%d+)-(%d+)-(%d+) (%d+):(%d+):(%d+)"
     local year, month, day, hour, minute, second = dateString:match(pattern)
@@ -42,13 +43,13 @@ local function ConvertToTimestamp(dateString)
     })
 end
 
--- Pastebin дээрх түлхүүр болон хугацааг татах функц
+-- Fetch keys from Pastebin
 local function GetKeysFromPastebin()
-    local keyUrl = 'https://pastebin.com/raw/B9h0fG6e'  -- Таны оруулсан Pastebin линк
+    local keyUrl = 'https://pastebin.com/raw/B9h0fG6e'  -- Pastebin link
     local response = game:HttpGet(keyUrl)
     local keys = {}
     
-    for line in response:gmatch("[^\r\n]+") do  -- Түлхүүрүүдийг newline-аар салгаж массив болгон хадгалах
+    for line in response:gmatch("[^\r\n]+") do -- Parse keys and expiration dates
         local key, expiration = line:match("([^|]+)|([^|]+)")
         if key and expiration then
             table.insert(keys, {key = key, expiration = expiration})
@@ -57,7 +58,7 @@ local function GetKeysFromPastebin()
     return keys
 end
 
--- Түлхүүрийг шалгах функц
+-- Validate the key
 local function IsKeyValid(enteredKey)
     local keys = GetKeysFromPastebin()
     for _, data in pairs(keys) do
@@ -65,7 +66,7 @@ local function IsKeyValid(enteredKey)
         local expirationDate = data.expiration
         local expirationTime = ConvertToTimestamp(expirationDate)
 
-        -- Хэрэв түлхүүр зөв бөгөөд хугацаа дуусаагүй бол
+        -- Return true if key is valid and not expired
         if enteredKey == key and os.time() < expirationTime then
             return true, expirationTime
         end
@@ -73,70 +74,65 @@ local function IsKeyValid(enteredKey)
     return false, nil
 end
 
--- Зөв түлхүүр байвал ачааллах функц
-function MakeScriptHub()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Frenzybn/frenzyscript/refs/heads/main/FrenzyHub.lua"))()  -- Таны оруулсан скрипт
+-- Load Hydra Hub if key is valid
+function LoadHydraHub()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/StepBroFurious/Script/main/HydraHubUi.lua"))() -- Load Hydra Hub
 end
 
--- Rayfield цонх үүсгэх
-local Window = Rayfield:CreateWindow({
-   Name = "BloxFruit Script under 🚧",
-   LoadingTitle = "All Devs Hub",
-   LoadingSubtitle = "by All Devs",
-   ConfigurationSaving = {
-      Enabled = false,
-      FolderName = nil,
-      FileName = "AllDevs"
-   },
-   Discord = {
-      Enabled = false,
-      Invite = "noinvitelink",
-      RememberJoins = true
-   },
-   KeySystem = false
+-- Create Hydra Hub window
+local Window = HydraHub:CreateWindow({
+    Name = "Hydra Hub Key System",
+    LoadingTitle = "Hydra Hub",
+    LoadingSubtitle = "Please enter your key...",
+    ConfigurationSaving = {
+        Enabled = false,
+        FolderName = nil,
+        FileName = "HydraHubConfig"
+    },
+    KeySystem = true
 })
 
--- "Key" табыг үүсгэх
-local Tab = Window:CreateTab("Key System", 4483345998)
+-- Create "Key" tab
+local Tab = Window:CreateTab("Key Verification", 4483345998)
 
--- Textbox хэрэглэгчийн түлхүүрийг оруулахад
+-- Input for key entry
 Tab:CreateInput({
-    Name = "Enter key",
+    Name = "Enter Key",
     PlaceholderText = "Enter your key here",
     RemoveTextAfterFocusLost = false,
     Callback = function(Value)
-        _G.KeyInput = Value  -- Хэрэглэгчийн оруулсан түлхүүрийг хадгална
+        _G.KeyInput = Value -- Store entered key
     end
 })
 
--- Түлхүүр шалгах товч
+-- Button to check key
 Tab:CreateButton({
     Name = "Check Key",
     Callback = function()
         if IsSubscriptionActive() then
-            Rayfield:Notify({
+            HydraHub:Notify({
                 Title = "Subscription Active",
                 Content = "Your subscription is still active.",
                 Duration = 5,
                 Image = 4483345998
             })
         else
-            local isValid, expirationTime = IsKeyValid(_G.KeyInput)  -- Түлхүүр зөв эсэхийг шалгах
+            local isValid, expirationTime = IsKeyValid(_G.KeyInput) -- Validate the key
             if isValid then
-                SaveKeyExpiration(expirationTime)  -- Түлхүүрийн хугацааг хадгалах
-                Rayfield:Notify({
+                SaveKeyExpiration(expirationTime) -- Save expiration
+                HydraHub:Notify({
                     Title = "Key Accepted",
-                    Content = "Your subscription is now active until " .. os.date("%Y-%m-%d %H:%M:%S", expirationTime),
+                    Content = "Subscription active until " .. os.date("%Y-%m-%d %H:%M:%S", expirationTime),
                     Duration = 5,
                     Image = 4483345998
                 })
-                wait(1)  -- Мэдэгдлийн дараа ачааллыг хүлээх
-                Rayfield:Destroy()  -- Одоо байгаа цонх болон интерфэйсийг устгах
-                MakeScriptHub()  -- Зөв түлхүүрийг оруулсан тул скриптийг ачаална
+                wait(1)
+                HydraHub:Destroy() -- Destroy current UI
+                LoadHydraHub() -- Load Hydra Hub
             else
-                Rayfield:Notify({
+                HydraHub:Notify({
                     Title = "Invalid Key",
-                    Content = "The key you entered is either incorrect or expired.",
+                    Content = "The key is either incorrect or expired.",
                     Duration = 5,
                     Image = 4483345998
                 })
@@ -145,4 +141,4 @@ Tab:CreateButton({
     end
 })
 
-Rayfield:LoadConfiguration()
+HydraHub:LoadConfiguration()
