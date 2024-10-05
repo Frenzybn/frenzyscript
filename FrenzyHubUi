@@ -124,7 +124,7 @@ CheckKeyButtonCorner.CornerRadius = UDim.new(0, 8)
 CheckKeyButtonCorner.Parent = CheckKeyButton
 
 -- Key check functionality with valid key check
-local validKeys = {"VALIDKEY", "ANOTHERKEY", "VIPACCESS"}
+local validKeys = {"MYSECRETKEY123", "ANOTHERKEY456", "VIPACCESS789"} -- Replace with actual keys
 
 CheckKeyButton.MouseButton1Click:Connect(function()
     local key = TextBox.Text
@@ -139,9 +139,15 @@ CheckKeyButton.MouseButton1Click:Connect(function()
     if isValid then
         print("Key accepted!")
         MainTabLabel.Text = "Key Accepted!"
+        wait(1) -- Wait before proceeding
+        MakeScriptHub() -- Call the function to load Frenzy Hub
     else
         print("Invalid key!")
         MainTabLabel.Text = "Invalid Key!"
     end
 end)
 
+-- Зөв түлхүүр байвал ачааллах функц
+function MakeScriptHub()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Frenzybn/frenzyscript/refs/heads/main/FrenzyHub.lua"))()  -- Load Frenzy Hub script
+end
