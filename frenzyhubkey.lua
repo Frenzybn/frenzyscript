@@ -1,16 +1,16 @@
--- Load Hydra Hub Library
-local HydraHub = loadstring(game:HttpGet('https://raw.githubusercontent.com/StepBroFurious/Script/main/HydraHubUi.lua'))()
+-- Load your custom hub library (you can host it on GitHub or another platform)
+local CustomHub = 
 
--- Key and expiration variables
+-- Key system configuration
 _G.KeyInput = "string"
-local savedKeyPath = "HydraConfig/KeyExpiration"
+local savedKeyPath = "CustomHubConfig/KeyExpiration"
 
--- Function to save expiration time
+-- Function to save the expiration time of the key
 local function SaveKeyExpiration(expirationTime)
     writefile(savedKeyPath, tostring(expirationTime))
 end
 
--- Function to load expiration time
+-- Function to load the expiration time of the key
 local function LoadKeyExpiration()
     if isfile(savedKeyPath) then
         return tonumber(readfile(savedKeyPath))
@@ -19,7 +19,7 @@ local function LoadKeyExpiration()
     end
 end
 
--- Check if subscription is still active
+-- Function to check if the subscription is still active
 local function IsSubscriptionActive()
     local expirationTime = LoadKeyExpiration()
     if expirationTime then
@@ -29,7 +29,7 @@ local function IsSubscriptionActive()
     end
 end
 
--- Convert date to timestamp
+-- Function to convert date to timestamp
 local function ConvertToTimestamp(dateString)
     local pattern = "(%d+)-(%d+)-(%d+) (%d+):(%d+):(%d+)"
     local year, month, day, hour, minute, second = dateString:match(pattern)
@@ -43,13 +43,13 @@ local function ConvertToTimestamp(dateString)
     })
 end
 
--- Fetch keys from Pastebin
+-- Function to fetch keys from a Pastebin link
 local function GetKeysFromPastebin()
-    local keyUrl = 'https://pastebin.com/raw/B9h0fG6e'  -- Pastebin link
+    local keyUrl = 'https://pastebin.com/raw/B9h0fG6e'  -- Replace with your Pastebin link
     local response = game:HttpGet(keyUrl)
     local keys = {}
-    
-    for line in response:gmatch("[^\r\n]+") do -- Parse keys and expiration dates
+
+    for line in response:gmatch("[^\r\n]+") do -- Split keys and expiration dates
         local key, expiration = line:match("([^|]+)|([^|]+)")
         if key and expiration then
             table.insert(keys, {key = key, expiration = expiration})
@@ -58,7 +58,7 @@ local function GetKeysFromPastebin()
     return keys
 end
 
--- Validate the key
+-- Function to check if the entered key is valid
 local function IsKeyValid(enteredKey)
     local keys = GetKeysFromPastebin()
     for _, data in pairs(keys) do
@@ -66,7 +66,6 @@ local function IsKeyValid(enteredKey)
         local expirationDate = data.expiration
         local expirationTime = ConvertToTimestamp(expirationDate)
 
-        -- Return true if key is valid and not expired
         if enteredKey == key and os.time() < expirationTime then
             return true, expirationTime
         end
@@ -74,63 +73,74 @@ local function IsKeyValid(enteredKey)
     return false, nil
 end
 
--- Load Hydra Hub if key is valid
-function LoadHydraHub()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/StepBroFurious/Script/main/HydraHubUi.lua"))() -- Load Hydra Hub
+-- Function to load the main custom hub if the key is valid
+function LoadCustomHub()
+    -- Insert the logic to load your custom hub's main UI and features
+    print("Loading Custom Hub...")
+    -- Example: loading a custom feature
+    CustomHub:InitializeFeatures()
 end
 
--- Create Hydra Hub window
-local Window = HydraHub:CreateWindow({
-    Name = "Hydra Hub Key System",
-    LoadingTitle = "Hydra Hub",
-    LoadingSubtitle = "Please enter your key...",
+-- Function to initialize custom hub features
+function CustomHub:InitializeFeatures()
+    -- Example of creating a feature tab in your custom hub
+    print("Feature 1: Auto Farm Enabled")
+    print("Feature 2: ESP Enabled")
+    -- Add more features for your custom hub here
+end
+
+-- Custom UI window for key entry and verification
+local Window = CustomHub:CreateWindow({
+    Name = "Custom Hub Key System",
+    LoadingTitle = "Welcome to Custom Hub",
+    LoadingSubtitle = "Please enter your key to continue",
     ConfigurationSaving = {
         Enabled = false,
         FolderName = nil,
-        FileName = "HydraHubConfig"
+        FileName = "CustomHubConfig"
     },
     KeySystem = true
 })
 
--- Create "Key" tab
+-- Create a tab for key verification
 local Tab = Window:CreateTab("Key Verification", 4483345998)
 
--- Input for key entry
+-- Input box for the key entry
 Tab:CreateInput({
     Name = "Enter Key",
-    PlaceholderText = "Enter your key here",
+    PlaceholderText = "Enter your key",
     RemoveTextAfterFocusLost = false,
     Callback = function(Value)
-        _G.KeyInput = Value -- Store entered key
+        _G.KeyInput = Value -- Store the user's entered key
     end
 })
 
--- Button to check key
+-- Button to verify the key
 Tab:CreateButton({
     Name = "Check Key",
     Callback = function()
         if IsSubscriptionActive() then
-            HydraHub:Notify({
+            CustomHub:Notify({
                 Title = "Subscription Active",
                 Content = "Your subscription is still active.",
                 Duration = 5,
                 Image = 4483345998
             })
         else
-            local isValid, expirationTime = IsKeyValid(_G.KeyInput) -- Validate the key
+            local isValid, expirationTime = IsKeyValid(_G.KeyInput) -- Check if the key is valid
             if isValid then
-                SaveKeyExpiration(expirationTime) -- Save expiration
-                HydraHub:Notify({
+                SaveKeyExpiration(expirationTime) -- Save the expiration time
+                CustomHub:Notify({
                     Title = "Key Accepted",
                     Content = "Subscription active until " .. os.date("%Y-%m-%d %H:%M:%S", expirationTime),
                     Duration = 5,
                     Image = 4483345998
                 })
-                wait(1)
-                HydraHub:Destroy() -- Destroy current UI
-                LoadHydraHub() -- Load Hydra Hub
+                wait(1) -- Give some time before proceeding
+                CustomHub:Destroy() -- Destroy the current window
+                LoadCustomHub() -- Load the custom hub
             else
-                HydraHub:Notify({
+                CustomHub:Notify({
                     Title = "Invalid Key",
                     Content = "The key is either incorrect or expired.",
                     Duration = 5,
@@ -141,4 +151,4 @@ Tab:CreateButton({
     end
 })
 
-HydraHub:LoadConfiguration()
+CustomHub:LoadConfiguration()
