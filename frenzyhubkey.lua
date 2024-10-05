@@ -35,7 +35,7 @@ end
 
 -- Fetch the correct key and its expiration date from Pastebin
 getgenv().Key, getgenv().ExpirationDate = getKeyDataFromPastebin()
-getgenv().KeyInput = "string" -- Require for the key to work
+getgenv().KeyInput = "" -- Require for the key to work
 
 local Tab = Window:MakeTab({
 	Name = "Key",
@@ -43,15 +43,17 @@ local Tab = Window:MakeTab({
 	PremiumOnly = false
 }) -- Making A Tab
 
+-- Textbox for entering the key
 Tab:AddTextbox({
-	Name = "Key",
-	Default = "Enter Key.",
+	Name = "Enter Key",
+	Default = "",
 	TextDisappear = true,
 	Callback = function(Value)
 		getgenv().KeyInput = Value
 	end
-}) -- You Will Enter The Key Here
+})
 
+-- Button to check the key
 Tab:AddButton({
 	Name = "Check Key",
 	Callback = function()
@@ -66,7 +68,7 @@ Tab:AddButton({
 			else
 				OrionLib:MakeNotification({
 					Name = "Checking Key",
-					Content = "Checking The Key You Entered",
+					Content = "Checking the key you entered...",
 					Image = "rbxassetid://4483345998",
 					Time = 5
 				})
@@ -84,13 +86,6 @@ Tab:AddButton({
 			end
 		else
 			OrionLib:MakeNotification({
-				Name = "Checking Key",
-				Content = "Checking The Key You Entered",
-				Image = "rbxassetid://4483345998",
-				Time = 5
-			})
-			wait(2)
-			OrionLib:MakeNotification({
 				Name = "Incorrect Key!",
 				Content = "The key you entered is incorrect.",
 				Image = "rbxassetid://4483345998",
@@ -98,6 +93,6 @@ Tab:AddButton({
 			})
 		end
 	end
-}) -- This Will Check The Key You Entered
+})
 
 OrionLib:Init() -- Require If The Script Is Done
