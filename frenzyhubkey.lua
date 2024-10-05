@@ -105,7 +105,7 @@ Tab:CreateInput({
     PlaceholderText = "Enter your key here",
     RemoveTextAfterFocusLost = false,
     Callback = function(Value)
-        _G.KeyInput = Value
+        _G.KeyInput = Value  -- Хэрэглэгчийн оруулсан түлхүүрийг хадгална
     end
 })
 
@@ -124,6 +124,7 @@ Tab:CreateButton({
             local isValid, expirationTime = IsKeyValid(_G.KeyInput)  -- Түлхүүр зөв эсэхийг шалгах
             if isValid then
                 SaveKeyExpiration(expirationTime)  -- Түлхүүрийн хугацааг хадгалах
+                Rayfield:Destroy()  -- Одоо байгаа цонх болон интерфэйсийг устгах
                 MakeScriptHub()  -- Зөв түлхүүрийг оруулсан тул скриптийг ачаална
                 Rayfield:Notify({
                     Title = "Key Accepted",
