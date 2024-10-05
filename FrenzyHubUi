@@ -1,0 +1,110 @@
+-- Create the custom UI Hub using Roblox GUI elements
+
+-- Create the main ScreenGui
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "CustomHub"
+ScreenGui.Parent = game.CoreGui
+
+-- Create a frame for the hub window
+local HubFrame = Instance.new("Frame")
+HubFrame.Size = UDim2.new(0, 400, 0, 300)
+HubFrame.Position = UDim2.new(0.5, -200, 0.5, -150)
+HubFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+HubFrame.Parent = ScreenGui
+
+-- Create a title for the hub
+local Title = Instance.new("TextLabel")
+Title.Size = UDim2.new(1, 0, 0, 50)
+Title.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.Text = "Custom UI Hub"
+Title.Font = Enum.Font.SourceSansBold
+Title.TextSize = 24
+Title.Parent = HubFrame
+
+-- Create tabs for different features
+local TabFrame = Instance.new("Frame")
+TabFrame.Size = UDim2.new(1, 0, 0, 30)
+TabFrame.Position = UDim2.new(0, 0, 0, 50)
+TabFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+TabFrame.Parent = HubFrame
+
+-- Create a button for the first tab (e.g., "Main")
+local MainTabButton = Instance.new("TextButton")
+MainTabButton.Size = UDim2.new(0, 100, 0, 30)
+MainTabButton.Position = UDim2.new(0, 10, 0, 0)
+MainTabButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+MainTabButton.Text = "Main"
+MainTabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+MainTabButton.Font = Enum.Font.SourceSansBold
+MainTabButton.TextSize = 18
+MainTabButton.Parent = TabFrame
+
+-- Create a content frame for the main tab
+local MainTabFrame = Instance.new("Frame")
+MainTabFrame.Size = UDim2.new(1, 0, 0, 200)
+MainTabFrame.Position = UDim2.new(0, 0, 0, 80)
+MainTabFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+MainTabFrame.Parent = HubFrame
+
+-- Create a label in the main tab
+local MainTabLabel = Instance.new("TextLabel")
+MainTabLabel.Size = UDim2.new(1, -20, 0, 50)
+MainTabLabel.Position = UDim2.new(0, 10, 0, 10)
+MainTabLabel.BackgroundTransparency = 1
+MainTabLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+MainTabLabel.Text = "Welcome to Custom UI Hub"
+MainTabLabel.Font = Enum.Font.SourceSansBold
+MainTabLabel.TextSize = 20
+MainTabLabel.Parent = MainTabFrame
+
+-- Create a button in the main tab
+local MainTabButton = Instance.new("TextButton")
+MainTabButton.Size = UDim2.new(0, 150, 0, 40)
+MainTabButton.Position = UDim2.new(0, 10, 0, 70)
+MainTabButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+MainTabButton.Text = "Click Me"
+MainTabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+MainTabButton.Font = Enum.Font.SourceSansBold
+MainTabButton.TextSize = 18
+MainTabButton.Parent = MainTabFrame
+
+-- Button click functionality
+MainTabButton.MouseButton1Click:Connect(function()
+    print("Button clicked!")
+end)
+
+-- Create an input text box in the main tab
+local TextBox = Instance.new("TextBox")
+TextBox.Size = UDim2.new(0, 200, 0, 40)
+TextBox.Position = UDim2.new(0, 10, 0, 130)
+TextBox.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.PlaceholderText = "Enter Key"
+TextBox.Text = ""
+TextBox.Font = Enum.Font.SourceSansBold
+TextBox.TextSize = 18
+TextBox.Parent = MainTabFrame
+
+-- Create a button to check the key
+local CheckKeyButton = Instance.new("TextButton")
+CheckKeyButton.Size = UDim2.new(0, 100, 0, 40)
+CheckKeyButton.Position = UDim2.new(0, 220, 0, 130)
+CheckKeyButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+CheckKeyButton.Text = "Check Key"
+CheckKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+CheckKeyButton.Font = Enum.Font.SourceSansBold
+CheckKeyButton.TextSize = 18
+CheckKeyButton.Parent = MainTabFrame
+
+-- Key check functionality
+CheckKeyButton.MouseButton1Click:Connect(function()
+    local key = TextBox.Text
+    if key == "VALIDKEY" then
+        print("Key accepted!")
+        MainTabLabel.Text = "Key Accepted!"
+    else
+        print("Invalid key!")
+        MainTabLabel.Text = "Invalid Key!"
+    end
+end)
