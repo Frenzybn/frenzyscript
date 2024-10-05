@@ -1,9 +1,10 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
 local Window = OrionLib:MakeWindow({
-    Name = "Key system", 
+    Name = "Subscription Key System", 
     HidePremium = false, 
     SaveConfig = true, 
+    ConfigFolder = "SubscriptionConfig",  
     IntroText = "Loading lionstarter.dll..."
 })
 
@@ -16,13 +17,35 @@ OrionLib:MakeNotification({
 
 _G.Key = "LION4ZP"  -- Таны зөв түлхүүр
 _G.KeyInput = "string"
+_G.SubscriptionDuration = 86400 -- 1 өдөр (секундээр)
 
--- Таны Pastebin-ээс скриптийг ачаалах хэсэг
-function MakeScriptHub()
-    loadstring(game:HttpGet("https://pastebin.com/raw/WjJ5GPt9"))()  -- Таны хийх ёстой Pastebin линк байна
+local savedKeyPath = "SubscriptionConfig/KeyExpiration"
+
+local function SaveKeyExpiration(expirationTime)
+    writefile(savedKeyPath, tostring(expirationTime))
 end
 
--- Түлхүүр зөв үед мэдэгдэл гаргах функц
+local function LoadKeyExpiration()
+    if isfile(savedKeyPath) then
+        return tonumber(readfile(savedKeyPath))
+    else
+        return nil
+    end
+end
+
+local function IsSubscriptionActive()
+    local expirationTime = LoadKeyExpiration()
+    if expirationTime then
+        return os.time() < expirationTime
+    else
+        return false
+    end
+end
+
+function MakeScriptHub()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Frenzybn/frenzyscript/refs/heads/main/FrenzyHub.lua"))() 
+end
+
 function CorrectKeyNotification()
     OrionLib:MakeNotification({
         Name = "Correct Key!",
@@ -32,7 +55,6 @@ function CorrectKeyNotification()
     })
 end
 
--- Түлхүүр буруу үед мэдэгдэл гаргах функц
 function IncorrectKeyNotification()
     OrionLib:MakeNotification({
         Name = "Incorrect Key!",
@@ -42,35 +64,36 @@ function IncorrectKeyNotification()
     })
 end
 
--- "Key" табыг үүсгэх
 local Tab = Window:MakeTab({
 	Name = "Key",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
--- Хэрэглэгчийн түлхүүр оруулах Textbox
 Tab:AddTextbox({
 	Name = "Enter key",
 	Default = "",
-	TextDisappear = true,
+	TextDisappear = false,  -- Оруулсан текстийг үлдээх
 	Callback = function(Value)
-		_G.KeyInput = Value  -- Хэрэглэгчийн оруулсан түлхүүрийг хадгална
+		_G.KeyInput = Value
 	end	  
 })
 
--- Түлхүүр шалгах товчлуур
 Tab:AddButton({
 	Name = "Check Key",
 	Callback = function()
-      	if _G.KeyInput == _G.Key then  -- Хэрэв оруулсан түлхүүр зөв байвал
-            MakeScriptHub()  -- Скрипт ачаална
-            CorrectKeyNotification()  -- Зөв түлхүүрийн мэдэгдэл гаргана
+        if IsSubscriptionActive() then
+            MakeScriptHub()
+            CorrectKeyNotification()
+        elseif _G.KeyInput == _G.Key then  
+            local expirationTime = os.time() + _G.SubscriptionDuration  
+            SaveKeyExpiration(expirationTime)  
+            MakeScriptHub()  
+            CorrectKeyNotification()  
         else
-            IncorrectKeyNotification()  -- Буруу түлхүүрийн мэдэгдэл гаргана
+            IncorrectKeyNotification()  
         end
   	end    
 })
 
--- Скриптийг эхлүүлэх
 OrionLib:Init()
