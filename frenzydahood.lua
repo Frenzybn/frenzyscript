@@ -161,7 +161,7 @@ MainBuffer:write(function()
 
 	local Legion = {}
 	local Main = nil
-	Legion.__index = Frenzy Hub
+	Legion.__index = Legion
 
 	local Services = {
 		CoreGui =  game:GetService("CoreGui"),
@@ -1481,7 +1481,7 @@ MainBuffer:write(function()
     local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))()
 
 
-	local legion = Legion.new({Title="Legion ",Credits = "Iux Skid, Fixed By: faisal8754"})
+	local legion = Legion.new({Title="Frenzy Hub ",Credits = "Frenzy "})
 	local Holder = Instance.new("Model",workspace)
 
 
