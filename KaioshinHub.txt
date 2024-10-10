@@ -2707,7 +2707,6 @@ local locallv = W:AddLabel("Level")
     local StastSword = W:AddLabel("Sword : "..game.Players.localPlayer.Data.Stats.Sword.Level.Value)
     local StastGun = W:AddLabel("")
     local StastDevilFruit = W:AddLabel("")
-    local PointsStast = W:AddLabel("")
     local Section = W:AddSection({
         Name = "Melee Check"
     })
@@ -2854,11 +2853,11 @@ task.spawn(function()
 
 if World2 and World1 then
     local Section = M:AddSection({
-        Name = "BOOTS"
+        Name = "BOOST"
     })
 
     M:AddButton({
-        Name = "Tăng FPS",
+        Name = "BOOST FPS",
         Callback = function()
             pcall(function()
                 game:GetService("Lighting").FantasySky:Destroy()
