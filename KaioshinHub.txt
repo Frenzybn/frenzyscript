@@ -2506,7 +2506,7 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shl
 local Window = OrionLib:MakeWindow({Name = "Frenzy Hub", HidePremium = false, IntroText = "Frenzy Hub", SaveConfig = true, ConfigFolder = "Kaioshin Hub"})
 ----------Tab-----------------------
 local W = Window:MakeTab({
-    Name = "Thông Tin",
+    Name = "Information",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -2524,7 +2524,7 @@ local ST = Window:MakeTab({
 })
 
 local IQ = Window:MakeTab({
-    Name = "Item",
+    Name = "Item & Quest",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -2593,6 +2593,14 @@ local C = Window:MakeTab({
 local Section = W:AddSection({
     Name = "Status"
 })
+
+W:AddLabel("[+] Kitsune Island")
+W:AddLabel("[+] Sea Event!")
+W:AddLabel("[+] Some bugs fixed!")
+W:AddLabel("[+] Frenzy hub is HERE!")
+W:AddLabel("[+] Best AutoFarm!")
+W:AddLabel("[+] Up and Growing")
+W:AddLabel("[+] Smooth")
 
 local locallv = W:AddLabel("Level")
     
@@ -2694,7 +2702,7 @@ local locallv = W:AddLabel("Level")
     local Section = W:AddSection({
         Name = "Stats Point"
     })
-    local StastMelee = W:AddLabel("")
+    local StastMelee = W:AddLabel("Melee : "..game.Players.localPlayer.Data.Stats.Melee.Level.Value)
     local StastDefense = W:AddLabel("")
     local StastSword = W:AddLabel("")
     local StastGun = W:AddLabel("")
