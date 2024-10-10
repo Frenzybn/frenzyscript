@@ -2584,13 +2584,7 @@ local SH = Window:MakeTab({
 })
 
 local C = Window:MakeTab({
-    Name = "Orther",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
-})
-
-local C = Window:MakeTab({
-    Name = "Wait Update ",
+    Name = "Misc",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
