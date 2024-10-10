@@ -2503,7 +2503,7 @@ end)
 ---
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "Kaioshin Hub", HidePremium = false, IntroText = "Kaioshin Hub", SaveConfig = true, ConfigFolder = "Kaioshin Hub"})
+local Window = OrionLib:MakeWindow({Name = "Frenzy Hub", HidePremium = false, IntroText = "Frenzy Hub", SaveConfig = true, ConfigFolder = "Kaioshin Hub"})
 ----------Tab-----------------------
 local W = Window:MakeTab({
     Name = "Thông Tin",
