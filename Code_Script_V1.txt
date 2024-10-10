@@ -2503,10 +2503,10 @@ end)
 ---
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "Kaioshin Hub! ", HidePremium = True, IntroText = "Kaioshin Hub", SaveConfig = false, ConfigFolder = "Kaioshin"})
+local Window = OrionLib:MakeWindow({Name = "Frenzy Hub! ", HidePremium = True, IntroText = "Frenzy Hub", SaveConfig = false, ConfigFolder = "Frenzy"})
 ----------Tab-----------------------
 local W = Window:MakeTab({
-    Name = "Thông Tin",
+    Name = "Information",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -2524,13 +2524,13 @@ local ST = Window:MakeTab({
 })
 
 local IQ = Window:MakeTab({
-    Name = "Item",
+    Name = "Item & Quest",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
 
 local S = Window:MakeTab({
-    Name = "Stat",
+    Name = "Stats",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -2572,7 +2572,7 @@ local D = Window:MakeTab({
 })
 
 local R = Window:MakeTab({
-    Name = "Tộc V4",
+    Name = "Race V4",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -2584,7 +2584,7 @@ local SH = Window:MakeTab({
 })
 
 local C = Window:MakeTab({
-    Name = "Orther",
+    Name = "Misc",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -2707,7 +2707,6 @@ local locallv = W:AddLabel("Level")
     local StastSword = W:AddLabel("")
     local StastGun = W:AddLabel("")
     local StastDevilFruit = W:AddLabel("")
-    local PointsStast = W:AddLabel("")
     local Section = W:AddSection({
         Name = "Melee Check"
     })
@@ -2854,11 +2853,11 @@ task.spawn(function()
 
 if World2 and World1 then
     local Section = M:AddSection({
-        Name = "BOOTS"
+        Name = "BOOST"
     })
 
     M:AddButton({
-        Name = "Tăng FPS",
+        Name = "BOOST FPS",
         Callback = function()
             pcall(function()
                 game:GetService("Lighting").FantasySky:Destroy()
@@ -2913,7 +2912,7 @@ end
         Name = "Other Farm"
     })
 
-    M:AddParagraph("Redeem Code","Click to Button to Reddem All Code In Blox Fruits.")
+    M:AddParagraph("Redeem Code","Click to Button to Redeem All Code In Blox Fruits.")
 
     local x2Code = {
         "JULYUPDATE_RESET",
@@ -2947,7 +2946,7 @@ end
     
     
     M:AddButton({
-        Name = "nhập hết code",
+        Name = "Redeem all code",
         Callback = function()
             function RedeemCode(value)
                 game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(value)
@@ -2959,13 +2958,13 @@ end
     })
 
     local Section = M:AddSection({
-        Name = "Tự động Farm Level"
+        Name = "Auto Farm Level"
     })
 
 M:AddParagraph("Main Farm","")
 
 ToggleFarm = M:AddToggle({
-    Name = "Farm Lever",
+    Name = "Auto Farm Level",
     Default = false,
     Flag = "LevelFarm",
     Save = true,
@@ -2999,7 +2998,7 @@ end)
 
 
 M:AddToggle({
-    Name = "đến đảo kitsune",
+    Name = "Kitsune island tween",
     Default = false,
     Flag = "KitsuneIslandTween",
     Save = true,
@@ -3031,7 +3030,7 @@ spawn(function()
 end)
 
 M:AddToggle({
-    Name = "nhặt lửa",
+    Name = "Pick AzureEmber",
     Default = false,
     Flag = "AutoAzureAmber",
     Save = true,
@@ -3055,7 +3054,7 @@ end)
 
 
 M:AddToggle({
-    Name = "định vị đảo kitsune",
+    Name = "Kitsune Island ESP",
     Default = false,
     Flag = "EspKitsune",
     Save = true,
@@ -3106,7 +3105,7 @@ end
 M:AddParagraph("Sea Event","")
 
 M:AddToggle({
-    Name = "Đánh TerrorShark",
+    Name = "Auto TerrorShark",
     Default = false,
     Flag = "Terrorshark",
     Save = true,
@@ -3117,7 +3116,7 @@ M:AddToggle({
 })
 
 M:AddToggle({
-    Name = "Đánh Shark",
+    Name = "Auto Shark",
     Default = false,
     Flag = "Shark",
     Save = true,
@@ -3165,7 +3164,7 @@ spawn(function()
 end)
 
 M:AddToggle({
-    Name = "Đánh Piranha",
+    Name = "Auto Piranha",
     Default = false,
     Flag = "Piranha",
     Save = true,
@@ -3177,7 +3176,7 @@ M:AddToggle({
 
 
 M:AddToggle({
-    Name = "Đánh Fish Crew",
+    Name = "Auto Fish Crew",
     Default = false,
     Flag = "FishCrew",
     Save = true,
@@ -3306,7 +3305,7 @@ local Section = M:AddSection({
 M:AddParagraph("Mastery Menu","")
 
 M:AddToggle({
-    Name = "Cày Thông thạo Trái",
+    Name = "Auto Farm BF Mastery",
     Default = false,
     Flag = "Mastery",
     Save = true,
@@ -3320,7 +3319,7 @@ M:AddToggle({
 })
 
 M:AddToggle({
-    Name = "Cày Thông thạo Súng",
+    Name = "Auto Farm Gun Mastery",
     Default = false,
     Flag = "Gun Mastery",
     Save = true,
@@ -3331,7 +3330,7 @@ M:AddToggle({
 })
 
     M:AddSlider({
-        Name = "Máu",
+        Name = "Health mob",
         Min = 0,
         Max = 100,
         Default = 25,
@@ -3406,7 +3405,7 @@ M:AddToggle({
     })
 
 M:AddToggle({
-    Name = "gom quái",
+    Name = "Bring Mobs",
     Default = true,
     Flag = "Bring Mobs",
     Save = false,
@@ -3448,7 +3447,7 @@ local Section = M:AddSection({
 })
 
 M:AddToggle({
-    Name = "Đánh Nhanh",
+    Name = "Fast Attack",
     Default = true,
     Flag = "FastAttack",
     Save = false,
@@ -3496,7 +3495,7 @@ local Section = M:AddSection({
 })
 
 M:AddToggle({
-    Name = "Di Chuyển = Reset",
+    Name = "Bypass TP",
     Default = false,
     Flag = "Bypass TP",
     Save = true,
@@ -3512,7 +3511,7 @@ local Section = M:AddSection({
 
 PosY = 30
 M:AddSlider({
-    Name = "Khoảng Cách",
+    Name = "Distance Mob",
     Min = 0,
     Max = 65,
     Default = PosY,
@@ -3532,7 +3531,7 @@ local Section = M:AddSection({
 })
 
 Farmfasttoggle = M:AddToggle({
-    Name = "Cày Nhanh",
+    Name = "Auto Farm Fast",
     Default = false,
     Flag = "Farm Fast",
     Save = true,
@@ -3593,7 +3592,7 @@ end)
 
 if World1 then
     M:AddDropdown({
-        Name = "Chọn quái",
+        Name = "Select Mob",
         Default = "",
         Options = {"Bandit","Monkey","Gorilla","Pirate","Brute","Desert Bandit","Desert Officer","Snow Bandit","Snowman","Chief Petty Officer","Sky Bandit","Dark Master","Prisoner", "Dangerous Prisoner","Toga Warrior","Gladiator","Military Soldier","Military Spy","Fishman Warrior","Fishman Commando","God's Guard","Shanda","Royal Squad","Royal Soldier","Galley Pirate ","Galley Captain"},
         Callback = function(Value)
@@ -3604,7 +3603,7 @@ if World1 then
     
     if World2 then
     M:AddDropdown({
-        Name = "Chọn quái",
+        Name = "Select Mob",
         Default = "",
         Options = {"Raider","Mercenary","Swan Pirate","Factory Staff","Marine Lieutenant","Marine Captain","Zombie","Vampire","Snow Trooper","Winter Warrior","Lab Subordinate","Horned Warrior","Magma Ninja","Lava Pirate","Ship Deckhand","Ship Engineer","Ship Steward","Ship Officer","Arctic Warrior","Snow Lurker","Sea Soldier","Water Fighter"},
         Callback = function(Value)
@@ -3625,7 +3624,7 @@ if World1 then
     end
     
     M:AddToggle({
-        Name = "Cày quái",
+        Name = "Select Mob",
         Default = false,
         Callback = function(Value)
             _G.AutoFarmSelectMonster = Value
@@ -3637,7 +3636,7 @@ local Section = M:AddSection({
 })
 
 M:AddToggle({
-    Name = "đánh quái gần",
+    Name = " Auto Farm Nearest",
     Default = false,
     Flag = "Tự động Farm Nearest",
     Save = true,
@@ -3652,7 +3651,7 @@ M:AddToggle({
     })
 
 TweenChest = M:AddToggle({
-        Name = "Nhặt rương",
+        Name = "Auto Chest",
         Default = false,
         Flag = "Tự động Chest",
         Save = true,
@@ -3663,7 +3662,7 @@ TweenChest = M:AddToggle({
     })
 
     M:AddToggle({
-        Name = "Nhặt rương nhanh",
+        Name = "Auto Chest[Bypass]",
         Default = false,
         Flag = "Tự động Chest[Bypass]",
         Save = true,
