@@ -3831,9 +3831,9 @@ local BoSs = M:AddLabel("")
 		while wait() do
 			pcall(function()
 				if game:GetService("ReplicatedStorage"):FindFirstChild(_G.SelectBoss) or game:GetService("Workspace").Enemies:FindFirstChild(_G.SelectBoss) then
-					BoSs:Set("Status Boss : Có Boss Trong Server Nè ! ")	
+					BoSs:Set("Status Boss : ✅️ ")	
 				else
-					BoSs:Set("Status Boss : Đéo Có Boss Đâu Tìm Server Khác Đi Thằng Lờ ")	
+					BoSs:Set("Status Boss : ❌️ ")	
 				end
 			end)
         end
@@ -4299,7 +4299,7 @@ IQ:AddToggle({
 })
 
     local Section = IQ:AddSection({
-        Name = "Soul Guita"
+        Name = "Soul Guitar"
     })
 
     IQ:AddToggle({
@@ -4314,7 +4314,7 @@ IQ:AddToggle({
     })
 
 IQ:AddToggle({
-    Name = "Auto Soul Guita[HOP]",
+    Name = "Auto Soul Guitar[HOP]",
     Default = false,
     Flag = "Tự động Soul[HOP]",
     Save = true,
@@ -4324,7 +4324,7 @@ IQ:AddToggle({
 })
 
 IQ:AddToggle({
-    Name = "Auto Auto Observation V2",
+    Name = "Auto Observation V2",
     Default = false,
     Flag = "Tự động ObservationV2",
     Save = true,
@@ -4437,11 +4437,11 @@ IQ:AddToggle({
 
 
         local Section = IQ:AddSection({
-            Name = "Dark Dragger"
+            Name = "Dark Dagger"
         })
 
         IQ:AddToggle({
-            Name = "Auto Dark Dragger",
+            Name = "Auto Dark Dagger",
             Default = false,
             Flag = "Tự động Dark",
             Save = true,
@@ -4509,7 +4509,7 @@ local Section = IQ:AddSection({
     })
 
 IQ:AddToggle({
-    Name = "Auto treo Mirrage",
+    Name = "Auto teleport Mirrage",
     Default = false,
     Flag = "Tự động Mirrage",
     Save = true,
@@ -4683,7 +4683,7 @@ local Fruit = S:AddLabel("Fruit : ")
     end)
 
 S:AddToggle({
-    Name = "Auto Nâng",
+    Name = "Auto Kaitun",
     Default = false,
     Flag = "Tự động Kaitun",
     Save = true,
@@ -4703,7 +4703,7 @@ S:AddToggle({
 })
 
 S:AddToggle({
-    Name = "Máu",
+    Name = "Defense",
     Default = false,
     Flag = "Tự động Defense",
     Save = true,
@@ -4713,7 +4713,7 @@ S:AddToggle({
 })
 
 S:AddToggle({
-    Name = "Kiếm",
+    Name = "Sword",
     Default = false,
     Flag = "Tự động Sword",
     Save = true,
@@ -4723,7 +4723,7 @@ S:AddToggle({
 })
 
 S:AddToggle({
-    Name = "Súng",
+    Name = "Gun",
     Default = false,
     Flag = "Tự động Gun",
     Save = true,
@@ -4932,7 +4932,7 @@ function UpdateIslandESP()
 end
 
 E:AddToggle({
-    Name = "ESP Hoa",
+    Name = "ESP Flower",
     Default = false,
     Flag = "ESP Flower",
     Save = true,
@@ -5026,7 +5026,7 @@ RA:AddButton({
 })
 
 RA:AddToggle({
-    Name = "Auto Vào Raid",
+    Name = "Auto Start Raid",
     Default = false,
     Flag = "Tự động Start",
     Save = true,
@@ -5041,7 +5041,7 @@ local Section = RA:AddSection({
 })
 
 RA:AddToggle({
-    Name = "Kill Quái",
+    Name = "Kill Aura",
     Default = false,
     Flag = "Tự động KillAura",
     Save = true,
@@ -5051,7 +5051,7 @@ RA:AddToggle({
 })
 
     RA:AddToggle({
-        Name = "Qua đảo",
+        Name = "Mext Island",
         Default = false,
         Flag = "Tự động NextIsland",
         Save = true,
@@ -5496,7 +5496,7 @@ local Section = LC:AddSection({
 })
 
 LC:AddButton({
-    Name = "Xóa Xương Mù",
+    Name = "Clear Fog",
     Callback = function()
         game:GetService("Lighting").LightingLayers:Destroy()
         game:GetService("Lighting").Sky:Destroy()
@@ -5742,7 +5742,7 @@ SV:AddToggle({
 })
 
 SV:AddToggle({
-	Name = "Tìm đảo bí ẩn",
+	Name = "Hop Find Mirrage",
 	Default = false,
     Flag = "FindMrg",
     Save = true,
@@ -5757,7 +5757,7 @@ local Section = SV:AddSection({
 })
 
         SV:AddTextbox({
-            Name = "Dán id máy chủ cần vào",
+            Name = "Place id required",
             Default = "",
             TextDisappear = true,
             Callback = function(Value)
@@ -5766,7 +5766,7 @@ local Section = SV:AddSection({
         })
 
         SV:AddButton({
-            Name = "vào máy chủ đã dán id",
+            Name = "Join job id",
             Callback = function()
                 _G.AutoRejoin = false
                 game:GetService("TeleportService"):TeleportToPlaceInstance(game.placeId,_G.Job, game.Players.LocalPlayer)
@@ -5774,14 +5774,14 @@ local Section = SV:AddSection({
         })
 
         SV:AddButton({
-            Name = "Sao chép job id",
+            Name = "Copy job id",
             Callback = function()
                 setclipboard(tostring(game.JobId))
               end    
             })
 
         SV:AddButton({
-            Name = "Chuyển sv",
+            Name = "Hop server",
             Callback = function()
                 _G.AutoRejoin = false
                 Hop()
@@ -5789,14 +5789,14 @@ local Section = SV:AddSection({
         })
 
         SV:AddButton({
-            Name = "Vào lại sv",
+            Name = "Rejoin",
             Callback = function()
                 game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
               end    
         })
 
         SV:AddButton({
-            Name = "chuyển sv ít người",
+            Name = "Hop Server Low Players",
             Callback = function()
                 _G.AutoRejoin = false
                 getgenv().AutoTeleport = true
@@ -5847,7 +5847,7 @@ local Section = SV:AddSection({
         })
 
 D:AddButton({
-    Name = "Đổi Fruits",
+    Name = "Random Fruits",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Cousin","Buy")
       end    
