@@ -6606,15 +6606,6 @@ C:AddButton({
 })
 
 C:AddButton({
-    Name = "Open Inventory[Old]",
-    Callback = function()
-        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventoryWeapons")
-        wait(1)
-        game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Visible = true
-      end    
-})
-
-C:AddButton({
     Name = "Title Tab",
     Callback = function()
         local args = {
