@@ -2589,6 +2589,12 @@ local C = Window:MakeTab({
     PremiumOnly = false
 })
 
+local C = Window:MakeTab({
+    Name = "Misc",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
 -----Label--------------------
 local Section = W:AddSection({
     Name = "Status"
