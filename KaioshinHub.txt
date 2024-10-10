@@ -2503,10 +2503,10 @@ end)
 ---
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "Kaioshin Hub", HidePremium = false, IntroText = "Kaioshin Hub", SaveConfig = true, ConfigFolder = "Kaioshin Hub"})
+local Window = OrionLib:MakeWindow({Name = "Frenzy Hub", HidePremium = false, IntroText = "Frenzy Hub", SaveConfig = true, ConfigFolder = "Kaioshin Hub"})
 ----------Tab-----------------------
 local W = Window:MakeTab({
-    Name = "Thông Tin",
+    Name = "Information",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -2584,13 +2584,7 @@ local SH = Window:MakeTab({
 })
 
 local C = Window:MakeTab({
-    Name = "Orther",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
-})
-
-local C = Window:MakeTab({
-    Name = "Wait Update ",
+    Name = "Misc",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -2599,6 +2593,14 @@ local C = Window:MakeTab({
 local Section = W:AddSection({
     Name = "Status"
 })
+
+"W:AddLabel("[+] Kitsune Island")
+W:AddLabel("[+] Sea Event!")
+W:AddLabel("[+] Some bugs fixed!")
+W:AddLabel("[+] Frenzy hub is HERE!")
+W:AddLabel("[+] Best AutoFarm!")
+W:AddLabel("[+] Up and Growing")
+W:AddLabel("[+] Smooth")
 
 local locallv = W:AddLabel("Level")
     
@@ -2700,12 +2702,11 @@ local locallv = W:AddLabel("Level")
     local Section = W:AddSection({
         Name = "Stats Point"
     })
-    local StastMelee = W:AddLabel("")
-    local StastDefense = W:AddLabel("")
-    local StastSword = W:AddLabel("")
-    local StastGun = W:AddLabel("")
-    local StastDevilFruit = W:AddLabel("")
-    local PointsStast = W:AddLabel("")
+    local StastMelee = W:AddLabel("Melee : "..game.Players.localPlayer.Data.Stats.Melee.Level.Value)
+    local StastDefense = W:AddLabel("Defense : "..game.Players.localPlayer.Data.Stats.Defense.Level.Value)
+    local StastSword = W:AddLabel("Sword : "..game.Players.localPlayer.Data.Stats.Sword.Level.Value)
+    local StastGun = W:AddLabel("Gun : "..game.Players.localPlayer.Data.Stats.Gun.Level.Value)
+    local StastDevilFruit = W:AddLabel("Fruit : "..game.Players.localPlayer.Data.Stats["Demon Fruit"].Level.Value)
     local Section = W:AddSection({
         Name = "Melee Check"
     })
