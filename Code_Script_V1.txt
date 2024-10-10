@@ -2702,7 +2702,7 @@ local locallv = W:AddLabel("Level")
     local Section = W:AddSection({
         Name = "Stats Point"
     })
-    local StastMelee = W:AddLabel("")
+    local StastMelee = W:AddLabel("Melee : "..game.Players.localPlayer.Data.Stats.Melee.Level.Value)
     local StastDefense = W:AddLabel("")
     local StastSword = W:AddLabel("")
     local StastGun = W:AddLabel("")
