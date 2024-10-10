@@ -6744,7 +6744,7 @@ spawn(function()
     })
 
     C:AddToggle({
-        Name = "Vô hạn Soru",
+        Name = "Infinity Soru",
         Default = false,
         Callback = function(Value)
             getgenv().InfSoru = Value
