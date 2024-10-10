@@ -2503,7 +2503,7 @@ end)
 ---
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "Frenzy Hub! ", HidePremium = false, IntroText = "Frenzy HUB", SaveConfig = false, ConfigFolder = "Frenzy"})
+local Window = OrionLib:MakeWindow({Name = "Frenzy Hub! ", HidePremium = true, IntroText = "Frenzy HUB", SaveConfig = false, ConfigFolder = "Frenzy"})
 
 OrionLib:MakeNotification({
 	Name = "Frenzy hub",
@@ -2609,14 +2609,6 @@ local C = Window:MakeTab({
 local Section = W:AddSection({
     Name = "Update"
 })
-
-W:AddLabel("[+] Kitsune Island")
-W:AddLabel("[+] Sea Event!")
-W:AddLabel("[+] Some bugs fixed!")
-W:AddLabel("[+] Frenzy hub is HERE!")
-W:AddLabel("[+] Best AutoFarm!")
-W:AddLabel("[+] Up and Growing")
-W:AddLabel("[+] Smooth")
 
 local Section = W:AddSection({
     Name = "Status"
