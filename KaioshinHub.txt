@@ -6013,7 +6013,7 @@ spawn(function()
 end)
 
 D:AddToggle({
-    Name = "Collect All Fruit (dễ kick)",
+    Name = "Collect All Fruit (75% kick)",
     Default = false,
     Flag = "Bring All Fruit[75% Kick]",
     Save = true,
@@ -6040,7 +6040,7 @@ local Section = R:AddSection({
 })
 
 AutoPullLever = R:AddToggle({
-    Name = "Auto Pull Lever ( Gạt Cần)",
+    Name = "Auto Pull Lever",
     Default = false,
     Flag = "Auto Pull Lever",
     Save = true,
@@ -6179,7 +6179,7 @@ R:AddButton({
 })
 
 R:AddButton({
-    Name = "Teleport Cần Gạt",
+    Name = "Teleport Lever Pull",
     Callback = function()
         PullLever()
       end    
@@ -6354,28 +6354,28 @@ local Section = SH:AddSection({
 })
 
 SH:AddButton({
-    Name = "Mua haki vũ trang",
+    Name = "Buy Buso Haki",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Buso")
       end    
 })
 
 SH:AddButton({
-    Name = "Mua nhảy liên tục",
+    Name = "Buy Geppo Haki",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Geppo")
       end    
 })
 
 SH:AddButton({
-    Name = "Mua Soru",
+    Name = "Buy Flash Step(Soru)",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Soru")
       end    
 })
 
 SH:AddButton({
-    Name = "Mua haki quan sát",
+    Name = "Buy Observation(Ken) Haki",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk","Buy")
       end    
@@ -6388,7 +6388,7 @@ local Section = SH:AddSection({
 })
 
 SH:AddButton({
-    Name = "Mua tộc quỷ :",
+    Name = "Buy Ghoul Race :",
     Callback = function()
         local a = {
             [1] = "Ectoplasm",
@@ -6406,7 +6406,7 @@ SH:AddButton({
 })
 
 SH:AddButton({
-    Name = "Mua tộc robot :",
+    Name = "Buy Ghoul Race :",
     Callback = function()
         local a = {
             [1] = "CyborgTrainer",
@@ -6565,7 +6565,7 @@ SH:AddButton({
 })
 
 SH:AddButton({
-    Name = "Hoàn trả điểm",
+    Name = "Refund Stats[2,500 fragment]",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","1")
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","2")
@@ -6573,7 +6573,7 @@ SH:AddButton({
 })
 
 SH:AddButton({
-    Name = "Đổi tộc",
+    Name = "Race Random[3,000 fragment]",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Reroll","1")
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Reroll","2")
@@ -6585,7 +6585,7 @@ local Section = C:AddSection({
 })
 
 C:AddButton({
-    Name = "Cửa hàng trái",
+    Name = "Open Devil Fruit Shop",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("GetFruits")
         game:GetService("Players").LocalPlayer.PlayerGui.Main.FruitShop.Visible = true	
@@ -6616,7 +6616,7 @@ C:AddButton({
 })
 
 C:AddToggle({
-    Name = "Mua Haki Màu",
+    Name = "Buy Haki Màu",
     Default = false,
     Callback = function(Value)
         _G.AutoBuyEnchancementColour = Value
@@ -6655,7 +6655,7 @@ C:AddToggle({
 LockLevelValue = 2450
 OldLevel = game.Players.localPlayer.Data.Level.Value
 C:AddSlider({
-	Name = "Khóa Level",
+	Name = "Lock Level",
 	Min = 1,
 	Max = 2550,
 	Default = 2550,
@@ -6773,7 +6773,7 @@ spawn(function()
     end)
 
     C:AddToggle({
-        Name = "xuyên tường",
+        Name = "No Clip",
         Default = false,
         Callback = function(Value)
             _G.NOCLIP = Value
@@ -6793,7 +6793,7 @@ spawn(function()
 
 
 C:AddButton({
-    Name = "XóaLava",
+    Name = "Remove Lava",
     Callback = function()
         for i,v in pairs(game.Workspace:GetDescendants()) do
             if v.Name == "Lava" then   
@@ -8559,13 +8559,13 @@ pcall(function()
         if _G.AutoEliteHunter then
             if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
                 OrionLib:MakeNotification({
-                    Name = "Kaioshin Hub(Noitification)",
+                    Name = "Frenzy Hub(Noitification)",
                     Content = "[EN] : Please cancel the farrm level quest (if any)",
                     Image = "rbxassetid://4483345998",
                     Time = 9
                 })
                 OrionLib:MakeNotification({
-                    Name = "Kaioshin Hub(Noitification)",
+                    Name = "Frenzy Hub(Noitification)",
                     Content = "[VN] : Làm ơn hủy nhiệm vụ farrm level(nếu có)",
                     Image = "rbxassetid://4483345998",
                     Time = 9
@@ -8734,7 +8734,7 @@ spawn(function()
             if _G.AutoObservation then
                 if game:GetService("Players").LocalPlayer.VisionRadius.Value >= 3000 then
                     OrionLib:MakeNotification({
-                        Name = "Kaioshin Hub BOT",
+                        Name = "Frenzy Hub",
                         Content = "!!You Are Max Point!!",
                         Image = "rbxassetid://14919714384",
                         Time = 5
@@ -8883,7 +8883,7 @@ spawn(function()
         if Mybeli <= 2500000 or MyFragment <= 5000 then
             wait(2.0)
             OrionLib:MakeNotification({
-                Name = "Kaioshin Hub",
+                Name = "Frenzy Hub",
                 Content = "You not have beli or fragment!",
                 Image = "rbxassetid://4483345998",
                 Time = 5
@@ -9044,7 +9044,7 @@ spawn(function()
                         end
                     else
                         OrionLib:MakeNotification({
-                            Name = "Kaioshin Hub BOT",
+                            Name = "Frenzy Hub",
                             Content = "Not Have Superhuman",
                             Image = "rbxassetid://14919714384",
                             Time = 5
@@ -9057,7 +9057,7 @@ spawn(function()
                         end
                     else
                         OrionLib:MakeNotification({
-                            Name = "Kaioshin Hub BOT",
+                            Name = "Frenzy Hub",
                             Content = "Not Have Death Step",
                             Image = "rbxassetid://14919714384",
                             Time = 5
@@ -9070,7 +9070,7 @@ spawn(function()
                         end
                     else
                         OrionLib:MakeNotification({
-                            Name = "Kaioshin Hub BOT",
+                            Name = "Frenzy Hub",
                             Content = "Not Have SharkMan Karate",
                             Image = "rbxassetid://14919714384",
                             Time = 5
@@ -9083,7 +9083,7 @@ spawn(function()
                         end
                     else
                         gOrionLib:MakeNotification({
-                            Name = "Kaioshin Hub BOT",
+                            Name = "Frenzy Hub",
                             Content = "Not Have Electric Claw",
                             Image = "rbxassetid://14919714384",
                             Time = 5
@@ -9094,7 +9094,7 @@ spawn(function()
                         if game.Players.LocalPlayer.Backpack:FindFirstChild("Dragon Talon") and game.Players.LocalPlayer.Backpack:FindFirstChild("Dragon Talon").Level.Value >= 400 or game.Players.LocalPlayer.Character:FindFirstChild("Dragon Talon") and game.Players.LocalPlayer.Character:FindFirstChild("Dragon Talon").Level.Value >= 400 then
                             if string.find(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman",true), "Bring") then
                                 OrionLib:MakeNotification({
-                                    Name = "Kaioshin Hub BOT",
+                                    Name = "Frenzy Hub",
                                     Content = "Not Have Enough Material",
                                     Image = "rbxassetid://14919714384",
                                     Time = 5
@@ -9106,7 +9106,7 @@ spawn(function()
                         end
                     else
                         OrionLib:MakeNotification({
-                            Name = "Kaioshin Hub BOT",
+                            Name = "Frenzy Hub",
                             Content = "You Not Have Dragon Talon! ",
                             Image = "rbxassetid://14919714384",
                             Time = 5
@@ -11505,7 +11505,7 @@ spawn(function()
             if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" or game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
                 wait(2.0)
                 OrionLib:MakeNotification({
-                    Name = "Kaioshin Hub",
+                    Name = "Frenzy Hub",
                     Content = "Turn Off Hop Find Moon Please",
                     Image = "rbxassetid://4483345998",
                     Time = 5
@@ -11513,7 +11513,7 @@ spawn(function()
             elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
                 Hop()
                 OrionLib:MakeNotification({
-                    Name = "Kaioshin Hub",
+                    Name = "Frenzy Hub",
                     Content = "Hop Server",
                     Image = "rbxassetid://4483345998",
                     Time = 5
@@ -11521,7 +11521,7 @@ spawn(function()
             elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
                 Hop()
                 OrionLib:MakeNotification({
-                    Name = "Kaioshin Hub",
+                    Name = "Frenzy Hub",
                     Content = "Hop Server",
                     Image = "rbxassetid://4483345998",
                     Time = 5
@@ -11529,7 +11529,7 @@ spawn(function()
             elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
                 Hop()
                 OrionLib:MakeNotification({
-                    Name = "Kaioshin Hub",
+                    Name = "Frenzy Hub",
                     Content = "Hop Server",
                     Image = "rbxassetid://4483345998",
                     Time = 5
