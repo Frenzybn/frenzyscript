@@ -3672,7 +3672,7 @@ TweenChest = M:AddToggle({
     })
 
 M:AddToggle({
-    Name = "dừng khi có cup hoặc key",
+    Name = "Stop Only Dark Key or God's Chalice",
     Default = false,
     Flag = "Stop Only Dark Key or God's Chalice",
     Save = true,
@@ -3701,13 +3701,13 @@ local Bone = M:AddLabel("Bone : ")
 spawn(function()
     while wait() do
         pcall(function()
-            Bone:Set("Còn : "..(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Check")))
+            Bone:Set("Bone You Have : "..(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Check")))
         end)
     end
 end)
 
 ToggleBone = M:AddToggle({
-    Name = "Cày xương",
+    Name = "Auto Farm Bone",
     Default = false,
     Flag = "Tự động Farm Bone",
     Save = true,
@@ -3718,7 +3718,7 @@ ToggleBone = M:AddToggle({
 })
         
 ToggleRandom = M:AddToggle({
-        Name = "đổi xương",
+        Name = "Auto Random Bone",
         Default = false,
         Flag = "Tự động Random Bone",
         Save = true,
@@ -3751,7 +3751,7 @@ local EliteProgress = M:AddLabel("")
     end)
 
     M:AddToggle({
-        Name = "Đánh Boss Bí Ẩn",
+        Name = "Auto Elite",
         Default = false,
         Flag = "Tự động Elite",
         Save = true,
@@ -3763,7 +3763,7 @@ local EliteProgress = M:AddLabel("")
 
 
     M:AddToggle({
-        Name = "Đánh Nhà Máy",
+        Name = "Auto Factory",
         Default = false,
         Flag = "Tự động Factory",
         Save = true,
@@ -3774,7 +3774,7 @@ local EliteProgress = M:AddLabel("")
     })
 
         M:AddToggle({
-            Name = "Đánh hải Tặc",
+            Name = "Raid Castle",
             Default = false,
             Flag = "Tự động Castle",
             Save = true,
@@ -3789,7 +3789,7 @@ local EliteProgress = M:AddLabel("")
         
 
         M:AddToggle({
-            Name = "Cày Katakuri",
+            Name = "Auto Katakuri",
             Default = false,
             Flag = "Tự động Katakuri",
             Save = true,
@@ -3800,7 +3800,7 @@ local EliteProgress = M:AddLabel("")
         })    
         
         M:AddToggle({
-            Name = "triệu hồi katakuri",
+            Name = "Auto Spawn katakuri",
             Default = true,
             Callback = function(Value)
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner",Value)
@@ -3808,7 +3808,7 @@ local EliteProgress = M:AddLabel("")
         })
         
         M:AddToggle({
-            Name = "Cày Katakuri v2",
+            Name = "Auto Katakuri v2",
             Default = false,
             Flag = "Tự động Katakuri v2",
             Save = true,
@@ -3831,9 +3831,9 @@ local BoSs = M:AddLabel("")
 		while wait() do
 			pcall(function()
 				if game:GetService("ReplicatedStorage"):FindFirstChild(_G.SelectBoss) or game:GetService("Workspace").Enemies:FindFirstChild(_G.SelectBoss) then
-					BoSs:Set("Status Boss : Có")	
+					BoSs:Set("Status Boss : ✅️")	
 				else
-					BoSs:Set("Status Boss : Không Có")	
+					BoSs:Set("Status Boss : ❌️")	
 				end
 			end)
         end
@@ -3852,7 +3852,7 @@ end
 
 
 M:AddDropdown({
-    Name = "Chọn Boss",
+    Name = "Select Boss",
     Default = "",
     Options = tableBoss,
     Flag = "Select Boss",
@@ -3865,7 +3865,7 @@ M:AddDropdown({
 
 
 M:AddToggle({
-    Name = "Đánh Boss",
+    Name = "Auto Farm Boss",
     Default = false,
     Flag = "Tự động Farm Boss",
     Save = true,
@@ -3909,7 +3909,7 @@ end)
 
 
 M:AddToggle({
-    Name = "Đánh hết Boss",
+    Name = "Auto Farm All Boss",
     Default = false,
     Flag = "Tự động Farm All Boss",
     Save = true,
@@ -3954,7 +3954,7 @@ end)
     })
 
     M:AddToggle({
-        Name = "Cày Điểm Haki Quan Sát",
+        Name = "Auto Farm Observation Haki",
         Default = false,
         Flag = "Tự động Farm Observation Haki",
         Save = true,
@@ -3965,7 +3965,7 @@ end)
     })
     
     M:AddToggle({
-        Name = "Cày Điểm Haki Quan Sát Đổi Sv",
+        Name = "Auto Farm Observation Haki[HOP]",
         Default = false,
         Flag = "Tự động Farm Observation Haki[HOP]",
         Save = true,
@@ -3979,7 +3979,7 @@ end)
     })
     
     M:AddToggle({
-        Name = "Tự động Death Step",
+        Name = "Auto Death Step",
         Default = false,
         Flag = "Tự động Death Step",
         Save = true,
@@ -3989,7 +3989,7 @@ end)
     })
 
     M:AddToggle({
-        Name = "Tự động SharkMan Karate",
+        Name = "Auto SharkMan Karate",
         Default = false,
         Flag = "Tự động SharkMan",
         Save = true,
@@ -4000,7 +4000,7 @@ end)
     })
 
  M:AddToggle({
-        Name = "Tự động Electric Claw",
+        Name = "Auto Electric Claw",
         Default = false,
         Flag = "Tự động Electric Claw",
         Save = true,
@@ -4011,7 +4011,7 @@ end)
     })
 
     M:AddToggle({
-        Name = "Tự động Dragon Talon",
+        Name = "Auto Dragon Talon",
         Default = false,
         Flag = "Tự động Dragon Talon",
         Save = true,
@@ -4021,7 +4021,7 @@ end)
     })
 
     M:AddToggle({
-        Name = "Tự động GodHuman",
+        Name = "Auto GodHuman",
         Default = false,
         Flag = "Tự động GodHuman",
         Save = true,
@@ -4031,7 +4031,7 @@ end)
     })
 
     ST:AddToggle({
-        Name = "Tự động Haki",
+        Name = "Auto Haki",
         Default = true,
         Callback = function(Value)
             _G.AUTOHAKI = Value
@@ -4051,7 +4051,7 @@ end)
     end)
 
     ST:AddToggle({
-        Name = "Tránh văng",
+        Name = "Anti afk",
         Default = true,
         Callback = function(Value)
             local vu = game:GetService("VirtualUser")
@@ -4066,7 +4066,7 @@ end)
     })
 
     ST:AddToggle({
-        Name = "Màn hình treo",
+        Name = "White screen",
         Default = false,
         Flag = "White screen",
         Save = true,
@@ -4126,7 +4126,7 @@ spawn(function()
 end)
 
 IQ:AddToggle({
-    Name = "Tự động Saber",
+    Name = "Auto Saber",
     Default = false,
     Flag = "Tự động Saber",
     Save = true,
@@ -4138,7 +4138,7 @@ IQ:AddToggle({
 
 
 IQ:AddToggle({
-    Name = "Tự động Saber[HOP]",
+    Name = "Auto Saber[HOP]",
     Default = false,
     Flag = "Tự động Saber[HOP]",
     Save = true,
@@ -4165,7 +4165,7 @@ spawn(function()
 end)
 
 TogglePolev1 = IQ:AddToggle({
-    Name = "Tự động Pole V.1",
+    Name = "Auto Pole V.1",
     Default = false,
     Flag = "Tự động Pole",
     Save = true,
@@ -4176,7 +4176,7 @@ TogglePolev1 = IQ:AddToggle({
 })
 
 TogglePolev1Hop = IQ:AddToggle({
-    Name = "Tự động Pole V.1[HOP]",
+    Name = "Auto Pole V.1[HOP]",
     Default = false,
     Flag = "Tự động Pole[HOP]",
     Save = true,
@@ -4190,7 +4190,7 @@ local Section = IQ:AddSection({
 })
 
 IQ:AddToggle({
-    Name = "Tự động Second Sea",
+    Name = "Auto Second Sea",
     Default = false,
     Flag = "Tự động Second",
     Save = true,
@@ -4204,7 +4204,7 @@ local Section = IQ:AddSection({
     Name = "Vampire"
 })
 IQ:AddToggle({
-    Name = "Tự động Vampire",
+    Name = "Auto Vampire",
     Default = false,
     Flag = "Tự động Vampire",
     Save = true,
@@ -4220,7 +4220,7 @@ local Section = IQ:AddSection({
 })
 
 IQ:AddToggle({
-    Name = "Tự động SuperHuman",
+    Name = "Auto SuperHuman",
     Default = false,
     Flag = "Tự động SuperHuman",
     Save = true,
@@ -4236,7 +4236,7 @@ local Section = IQ:AddSection({
 
 
 BartiloToggle = IQ:AddToggle({
-    Name = "Tự động Bartilo Quest",
+    Name = "Auto Bartilo Quest",
     Default = false,
     Flag = "Tự động Bartilo",
     Save = true,
@@ -4253,7 +4253,7 @@ local Section = IQ:AddSection({
 
 
 IQ:AddToggle({
-    Name = "Tự động Third Sea",
+    Name = "Auto Third Sea",
     Default = false,
     Flag = "Tự động Third",
     Save = true,
@@ -4264,7 +4264,7 @@ IQ:AddToggle({
 })
 
 IQ:AddToggle({
-    Name = "Tự động Buy Legend Sword",
+    Name = "Auto Buy Legend Sword",
     Default = false,
     Flag = "Tự động Legend",
     Save = true,
@@ -4278,7 +4278,7 @@ local Section = IQ:AddSection({
 })
 
 IQ:AddToggle({
-    Name = "Tự động Buddy Sword",
+    Name = "Auto Buddy Sword",
     Default = false,
     Flag = "Tự động Buddy",
     Save = true,
@@ -4289,7 +4289,7 @@ IQ:AddToggle({
 })
 
 IQ:AddToggle({
-    Name = "Tự động Buddy Sword[HOP]",
+    Name = "Auto Buddy Sword[HOP]",
     Default = false,
     Flag = "Tự động Buddy[HOP]",
     Save = true,
@@ -4299,11 +4299,11 @@ IQ:AddToggle({
 })
 
     local Section = IQ:AddSection({
-        Name = "Soul Guita"
+        Name = "Soul Guitar"
     })
 
     IQ:AddToggle({
-        Name = "Tự động Soul Guita",
+        Name = "Auto Soul Guitar",
         Default = false,
         Flag = "Tự động Soul",
         Save = true,
@@ -4314,7 +4314,7 @@ IQ:AddToggle({
     })
 
 IQ:AddToggle({
-    Name = "Tự động Soul Guita[HOP]",
+    Name = "Auto Soul Guitar[HOP]",
     Default = false,
     Flag = "Tự động Soul[HOP]",
     Save = true,
@@ -4324,7 +4324,7 @@ IQ:AddToggle({
 })
 
 IQ:AddToggle({
-    Name = "Tự động Auto Observation V2",
+    Name = "Auto Observation V2",
     Default = false,
     Flag = "Tự động ObservationV2",
     Save = true,
@@ -4335,11 +4335,11 @@ IQ:AddToggle({
 })
 
 local Section = IQ:AddSection({
-    Name = "Tự động Dual Curset Katana[Not Work]"
+    Name = "Auto Cursed Dual Katana[Not Work]"
 })
 
 IQ:AddToggle({
-    Name = "Tự động Dual Curset Katana",
+    Name = "Auto Cursed Dual Katana",
     Default = false,
     Flag = "Tự động DualCursetKatana",
     Save = true,
@@ -4354,7 +4354,7 @@ local Section = IQ:AddSection({
 })
 
 IQ:AddToggle({
-    Name = "Tự động Tushita",
+    Name = "Auto Tushita",
     Default = false,
     Flag = "Tự động Tushita",
     Save = true,
@@ -4366,7 +4366,7 @@ IQ:AddToggle({
 })
 
 IQ:AddToggle({
-    Name = "Tự động Tushita[HOP]",
+    Name = "Auto Tushita[HOP]",
     Default = false,
     Flag = "Tự động Tushita[HOP]",
     Save = true,
@@ -4380,7 +4380,7 @@ local Section = IQ:AddSection({
 })
 
 IQ:AddToggle({
-    Name = "Tự động Cavander",
+    Name = "Auto Cavander",
     Default = false,
     Flag = "Tự động Cavander",
     Save = true,
@@ -4391,7 +4391,7 @@ IQ:AddToggle({
 })
 
 IQ:AddToggle({
-    Name = "Tự động Cavander[HOP]",
+    Name = "Auto Cavander[HOP]",
     Default = false,
     Flag = "Tự động Cavander[HOP]",
     Save = true,
@@ -4405,7 +4405,7 @@ IQ:AddToggle({
         })
 
         IQ:AddToggle({
-            Name = "Tự động Twin Hook",
+            Name = "Auto Twin Hook",
             Default = false,
             Flag = "Tự động Twin",
             Save = true,
@@ -4424,7 +4424,7 @@ IQ:AddToggle({
         })
 
         IQ:AddToggle({
-            Name = "Tự động Hallow Scythe",
+            Name = "Auto Hallow Scythe",
             Default = false,
             Flag = "Tự động Hallow",
             Save = true,
@@ -4441,7 +4441,7 @@ IQ:AddToggle({
         })
 
         IQ:AddToggle({
-            Name = "Tự động Dark Dragger",
+            Name = "Auto Dark Dragger",
             Default = false,
             Flag = "Tự động Dark",
             Save = true,
@@ -4481,7 +4481,7 @@ IQ:AddToggle({
     })
 
     IQ:AddToggle({
-        Name = "Tự động Seabeast",
+        Name = "Auto Seabeast",
         Default = false,
         Flag = "Tự động Seabeast",
         Save = true,
@@ -4505,11 +4505,11 @@ spawn(function()
 end)
 
 local Section = IQ:AddSection({
-        Name = "Mirrage Menu"
+        Name = "Mirage Menu"
     })
 
 IQ:AddToggle({
-    Name = "Tự động treo đảo bí ẩn",
+    Name = "Auto Summon and Find Mirrage Island",
     Default = false,
     Flag = "Tự động Mirrage",
     Save = true,
@@ -4583,7 +4583,7 @@ IQ:AddToggle({
 }) 
     
 IQ:AddToggle({
-    Name = "Tìm đảo bí ẩn",
+    Name = "Find Mirrage[HOP]",
     Default = false,
     Flag = "Tự động Mirrage2",
     Save = true,
