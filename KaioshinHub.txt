@@ -2958,13 +2958,13 @@ end
     })
 
     local Section = M:AddSection({
-        Name = "Auto Farm Lever"
+        Name = "Auto Farm Level"
     })
 
 M:AddParagraph("Main Farm","")
 
 ToggleFarm = M:AddToggle({
-    Name = "Farm Lever",
+    Name = "Farm Level",
     Default = false,
     Flag = "LevelFarm",
     Save = true,
@@ -3547,7 +3547,7 @@ local Section = M:AddSection({
 
 
 M:AddToggle({
-    Name = "Cày 1-max",
+    Name = "Kaitun 1-max",
     Default = false,
     Flag = "Kaitun",
     Save = true,
@@ -3592,7 +3592,7 @@ end)
 
 if World1 then
     M:AddDropdown({
-        Name = "Chọn quái",
+        Name = "Select mob",
         Default = "",
         Options = {"Bandit","Monkey","Gorilla","Pirate","Brute","Desert Bandit","Desert Officer","Snow Bandit","Snowman","Chief Petty Officer","Sky Bandit","Dark Master","Prisoner", "Dangerous Prisoner","Toga Warrior","Gladiator","Military Soldier","Military Spy","Fishman Warrior","Fishman Commando","God's Guard","Shanda","Royal Squad","Royal Soldier","Galley Pirate ","Galley Captain"},
         Callback = function(Value)
@@ -3603,7 +3603,7 @@ if World1 then
     
     if World2 then
     M:AddDropdown({
-        Name = "Chọn quái",
+        Name = "Select mob",
         Default = "",
         Options = {"Raider","Mercenary","Swan Pirate","Factory Staff","Marine Lieutenant","Marine Captain","Zombie","Vampire","Snow Trooper","Winter Warrior","Lab Subordinate","Horned Warrior","Magma Ninja","Lava Pirate","Ship Deckhand","Ship Engineer","Ship Steward","Ship Officer","Arctic Warrior","Snow Lurker","Sea Soldier","Water Fighter"},
         Callback = function(Value)
@@ -3614,7 +3614,7 @@ if World1 then
     
     if World3 then
     M:AddDropdown({
-        Name = "Chọn quái",
+        Name = "Select mob",
         Default = "",
         Options = {"Pirate Millionaire","Dragon Crew Warrior","Dragon Crew Archer","Female Islander","Giant Islander","Marine Commodore","Marine Rear Admiral","Fishman Raider","Fishman Captain","Forest Pirate","Mythological Pirate","Jungle Pirate","Musketeer Pirate","Reborn Skeleton","Living Zombie","Demonic Soul","Posessed Mummy", "Peanut Scout", "Peanut President", "Ice Cream Chef", "Ice Cream Commander", "Cookie Crafter", "Cake Guard", "Baking Staff", "Head Baker", "Cocoa Warrior", "Chocolate Bar Battler", "Sweet Thief", "Candy Rebel", "Candy Pirate", "Snow Demon"},
         Callback = function(Value)
@@ -3624,7 +3624,7 @@ if World1 then
     end
     
     M:AddToggle({
-        Name = "Cày quái",
+        Name = "Farm mob",
         Default = false,
         Callback = function(Value)
             _G.AutoFarmSelectMonster = Value
@@ -3662,7 +3662,7 @@ TweenChest = M:AddToggle({
     })
 
     M:AddToggle({
-        Name = "Fast Auto Chest (Có Tỉ Lệ Ăn Ban! )",
+        Name = "Fast Auto Chest (Has Ban Rate! )",
         Default = false,
         Flag = "Auto Chest[Bypass]",
         Save = true,
@@ -3965,7 +3965,7 @@ end)
     })
     
     M:AddToggle({
-        Name = "Auto Farm  Haki Observation Haki V2 Đổi Sv",
+        Name = "Auto Farm Observation Haki V2",
         Default = false,
         Flag = "Tự động Farm Observation Haki[HOP]",
         Save = true,
